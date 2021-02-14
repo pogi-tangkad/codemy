@@ -51,6 +51,8 @@ edit_menu.add_command(label='Cut', command=fake_command)
 edit_menu.add_command(label='Copy', command=fake_command)
 edit_menu.add_command(label='Paste', command=fake_command)
 
+
+# Create Items to go in Grid
 show_button = Button(root, text='Show', command=show)
 hide_button = Button(root, text='Hide', command=hide)
 
@@ -75,8 +77,6 @@ my_status.grid(row=100, column=0, columnspan=20)
 
 root.columnconfigure((0,1), weight=1)
 root.rowconfigure(99, weight=1)
-
-
 
 
 
