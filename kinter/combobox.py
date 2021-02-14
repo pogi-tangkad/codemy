@@ -4,6 +4,7 @@ from tkinter import (Tk, Label, Frame, Button,
     Menu, PhotoImage, StringVar, Checkbutton,
     ttk, filedialog, Toplevel, Frame
 )
+import datetime
 import platform
 if platform.system() == 'Windows':
     import ctypes
@@ -68,41 +69,44 @@ test_menu.add_command(label='Test1', command=test1)
 test_menu.add_separator()
 test_menu.add_command(label='Test2', command=test2)
 
-options = [
-    'Saturday',
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday'
-]
-
-my_label = Label(root, text='')
-
+# Create Functions to use in program
 def update_label(x,y,z):
     my_label['text'] = f'You have chosen:  {my_combo.get()}'
 
 def hide_window():
     root.iconify()
 
+# Create variables to use in program
+options = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+]
+current_date = datetime.datetime.now()
+current_weekday = current_date.strftime('%w')
+my_label = Label(root)        # Place empty space to keep spacing before label updates
 option_var = StringVar()
-option_var.trace_add('write', update_label)
 
+# Create the Combo box selection
 my_combo = ttk.Combobox(
     root,
     value=options,
     state='readonly',
     textvariable=option_var
 )
-#my_combo.current(0)
+my_combo.current(current_weekday)        # Uncomment to have a pre-selected value when program starts
 my_combo.pack(pady=20)
 
 my_label.pack(pady=20)
 
+option_var.trace_add('write', update_label)
+
+# Create a button to test hiding the window ('iconify')
 my_button = Button(root, text='Hide Window', command=hide_window)
 my_button.pack(pady=50)
-
-
 
 root.mainloop()
