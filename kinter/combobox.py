@@ -36,7 +36,20 @@ def open_new_file():
         image_preview_win.title(root.filename)
         image_preview_win.geometry('400x400')
         for f_type in filetype_list:
-
+            if f_type not in root.filename.lower():
+                x = 1
+            else:
+                x = 0
+                break
+        if x == 1:
+            label_text = f'{root.filename}\nFile type not support by this program.'
+            image_label = Label(image_preview_win, text=label_text)
+        elif x == 0:
+            new_img = PhotoImage(file=root.filename)
+            my_img = new_img.zoom(2,2)
+            image_label = Label(image_preview_win, image=my_img)
+        image_label.pack(expand=True)
+        image_preview_win.mainloop()
 
 def test1():
     print('test1')
@@ -90,6 +103,8 @@ my_combo.pack(pady=20)
 
 my_label.pack(pady=20)
 
+# Create trace for StringVar(option_var) after initial label pack to
+# avoid displaying the Label(my_label) before an option was chosen.
 option_var.trace_add('write', update_label)
 
 # Create a button to test hiding the window ('iconify')
