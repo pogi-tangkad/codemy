@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
-from tkinter import (Tk, Label, Frame, Button,
-    Menu, PhotoImage, StringVar, Checkbutton,
-    ttk, filedialog, Toplevel
-)
+from tkinter import Tk, Label, PhotoImage, StringVar
 import mainMenu
-import datetime
 import platform
 if platform.system() == 'Windows':
     import ctypes

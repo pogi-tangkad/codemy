@@ -1,7 +1,4 @@
-from tkinter import (Tk, Label, Frame, Button,
-    Menu, PhotoImage, StringVar,
-    ttk, filedialog, Toplevel
-)
+from tkinter import Tk, Label, Menu, PhotoImage, StringVar, filedialog, Toplevel
 
 def main_menu(kinter_window, current_status):
     # Define a menu
@@ -17,7 +14,7 @@ def main_menu(kinter_window, current_status):
             title='Open New File',
             filetypes=(('PNG File', '*.png'), ('All Files','*'))
         )
-        if kinter_window.filename != '':
+        if kinter_window.filename not in [(), '']:
             image_preview_win = Toplevel()
             image_preview_win.title(kinter_window.filename)
             image_preview_win.geometry('400x400')
