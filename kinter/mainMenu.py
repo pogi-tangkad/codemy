@@ -39,6 +39,8 @@ def main_menu(kinter_window, current_status):
             image_label.pack(expand=True)
             image_preview_win.wm_protocol('WM_DELETE_WINDOW', win_is_gone)
             image_preview_win.mainloop()
+        else:
+            current_status.set('Waiting')
         
     def test1():
         print('test1')
