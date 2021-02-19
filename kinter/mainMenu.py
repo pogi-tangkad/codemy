@@ -1,4 +1,5 @@
-from tkinter import Tk, Label, Menu, PhotoImage, StringVar, filedialog, Toplevel
+from tkinter import Menu, filedialog
+import newWindow
 
 def main_menu(kinter_window, current_status):
     # Define a menu
@@ -15,30 +16,7 @@ def main_menu(kinter_window, current_status):
             filetypes=(('PNG File', '*.png'), ('All Files','*'))
         )
         if kinter_window.filename not in [(), '']:
-            image_preview_win = Toplevel()
-            image_preview_win.title(kinter_window.filename)
-            image_preview_win.geometry('400x400')
-            def win_is_gone():
-                current_status.set('Waiting')
-                image_preview_win.destroy()
-            for f_type in filetype_list:
-                if f_type not in kinter_window.filename.lower():
-                    x = 1
-                else:
-                    x = 0
-                    break
-            if x == 1:
-                current_status.set('New File Failed To Open')
-                label_text = f'{kinter_window.filename}\nFile type not support by this program.'
-                image_label = Label(image_preview_win, text=label_text)
-            elif x == 0:
-                current_status.set('New File Opened')
-                new_img = PhotoImage(file=kinter_window.filename)
-                my_img = new_img.zoom(2,2)
-                image_label = Label(image_preview_win, image=my_img)
-            image_label.pack(expand=True)
-            image_preview_win.wm_protocol('WM_DELETE_WINDOW', win_is_gone)
-            image_preview_win.mainloop()
+            newWindow.new_window(kinter_window.filename, filetype_list, current_status)
         else:
             current_status.set('Waiting')
         

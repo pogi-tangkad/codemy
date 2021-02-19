@@ -10,7 +10,7 @@ if platform.system() == 'Windows':
 
 # Create the root window with title and size
 root = Tk()
-root.title('Combo Boxes')
+root.title('Template Window')
 root.geometry('700x400')
 # Create window logo
 win_icon = PhotoImage(file = "Rlogo.png")
