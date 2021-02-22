@@ -33,6 +33,12 @@ mainMenu.main_menu(root, current_status)
 
 
 # Create a Visible Status Bar to show 'current_status'
+"""
+I really need to figure out how to make the modules into classes and be able
+to call and manipulate from the main program.  I also want to make the status
+bar its own thing like the menu and window modules.
+I don't like having these interlacing modules.
+"""
 empty_label = Label(root, height=int(root.winfo_reqheight()/10))
 empty_label.grid(row=99, column=0, columnspan=3)
 my_status = Label(root, textvariable=current_status, bd=2, relief='sunken', anchor='e', width=9000)
