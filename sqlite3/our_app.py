@@ -13,8 +13,10 @@ while True:
     elif q.lower() in ['y', 'yes']:
         first = input('\nFirst Name:  ')
         last = input('Last Name:  ')
-        email = input('Email Address:  ')
-        our_db.add_one(first, last, email)
+        if (email := input('Email Address:  ') != ''):
+            our_db.add_one(first, last, email)
+        else:
+            our_db.add_one(first, last)
 
 # Ask user to delete entry
 while True:

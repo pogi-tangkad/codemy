@@ -34,11 +34,12 @@ def show_all():
     close_db(conn)
 
 # Add new record to the DB
-def add_one(first, last, email):
+def add_one(first, last, email='no email given'):
     conn, c = connect_db()
     c.execute("INSERT INTO customers VALUES(?,?,?)", (first, last, email))
     close_db(conn)
 
+# Delete a single record by 'rowid'
 def delete_one():
     show_all()
     conn, c = connect_db()
