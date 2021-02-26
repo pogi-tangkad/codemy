@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import sqlite3
 
 def connect_db():
@@ -17,6 +18,7 @@ def close_db(conn):
 
 # Query the DB and show all results in nice table
 def show_all():
+    os.system('clear')
     conn, c = connect_db()
     # Run the query and build table
     c.execute("SELECT rowid,* FROM customers ORDER BY last_name,first_name")
