@@ -30,9 +30,10 @@ conn.commit()
 # Create List of values to put into the Table via executemany
 many_customers = [
     ('John', 'Elder', 'john@codemy.com'),
-    ('Tim', 'Wonky', 'twonk@codemy.com'),
+    ('Tim', 'Winky', 'twink@codemy.com'),
     ('Mary', 'Schmuckenhoffer', 'mary@codemy.com'),
     ('Darryl', 'Funbags', 'dbag@yabbadabba.com'),
+    ('Betty', 'Elder', 'betty@someplace.com'),
     ('Paula', 'Poundstone', 'poundstone@retroencabulator.com'),
     ('Fuh', 'Kyu', 'kyu@yabbadabba.com')
     ]
@@ -48,7 +49,11 @@ conn.commit()
 
 # Insert a single entry making sure to use the DEFAULT value for email
 c.execute("INSERT INTO customers (first_name, last_name) VALUES ('Mark', 'Elberg')")
+conn.commit()
 
+# Delete a single entry using 'rowid'
+c.execute("DELETE FROM customers WHERE rowid=2")
+conn.commit()
 
 # Query the database
 #c.execute("SELECT first_name FROM customers")
@@ -56,7 +61,8 @@ c.execute("INSERT INTO customers (first_name, last_name) VALUES ('Mark', 'Elberg
 
 # A new execute-select needs to be implemented after a fetch
 # to move the 'cursor' back to the beginning if needed
-c.execute("SELECT * FROM customers")
+# Now adding a sort using multi-level 'ORDER BY'
+c.execute("SELECT * FROM customers ORDER BY last_name,first_name")
 #print(c.fetchone()[1])
 #test_fetch = c.fetchmany(1)
 #print(test_fetch)
@@ -75,6 +81,10 @@ for item in items:
         print(f'{full_name}\t{item[2]}')
 #    first_names.append(item[0])
 #print(first_names)
+
+
+
+
 
 '''
 I am assuming that the following 'commit' and 'close' are going to be necessary
