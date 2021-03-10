@@ -18,7 +18,6 @@ def single_entry():
             first = input('\nFirst Name:  ')
             last = input('Last Name:  ')
             if (email := input('Email Address:  ')) != '':
-                print(email)
                 our_db.add_one(first, last, email)
             else:
                 our_db.add_one(first, last)

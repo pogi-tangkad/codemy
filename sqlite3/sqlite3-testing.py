@@ -25,6 +25,9 @@ c.execute("""CREATE TABLE customers (
     email TEXT DEFAULT 'no email given'
     )""")
 
+# Example TABLE creation using a variable(t_name) to name the TABLE
+#c.execute("CREATE TABLE {} (first_val TEXT, second_val TEXT, third_val INTEGER)".format('t_name'))
+
 conn.commit()
 
 # Create List of values to put into the Table via executemany

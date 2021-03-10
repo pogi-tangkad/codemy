@@ -8,6 +8,12 @@ def connect_db():
     conn = sqlite3.connect('customer.db')
     # Create a cursor to move through database
     c = conn.cursor()
+    # Create a table and keys if it doesn't already exist
+    c.execute("""CREATE TABLE IF NOT EXISTS customers (
+    first_name TEXT,
+    last_name TEXT,
+    email TEXT DEFAULT 'no email given'
+    )""")
     return conn, c
 
 def close_db(conn):
